@@ -6,8 +6,10 @@ use App\Http\Requests\AuthRequest;
 use App\Models\auth\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\SessionGuard;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -36,89 +38,67 @@ class UserController extends Controller
        );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreUserRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreUserRequest $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\auth\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function show(User $user)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\auth\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function edit(User $user)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateUserRequest  $request
-     * @param  \App\Models\auth\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateUserRequest $request, User $user)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\auth\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        //
-    }
-
 
     public function cekLogin(AuthRequest $request)
     {
         $credential = $request->only('email', 'password');
 
         $request->session()->regenerate();
-        if (Auth::attemp($credential)) {
+        if (Auth::attempt($credential)) {
             $user = Auth::user();
-            switch ($user->level) {
+            switch ($user) {
                 case '1':
-                   return redirect('/');
+                    return redirect()->intended('/');
                     break;
 
                 case '2':
-                   return redirect()->intended('pembelian');
+                    return redirect()->intended('catatan');
                     break;
             }
+            return redirect()->intended('/');
         }
+
+        return back()->withErrors([
+        'nofound' => 'Email or password is wrong'])->onlyInput('email');
+    }
+
+    public function logout(Request $request)
+    {
+        // Auth::logout();
+
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
+
+        // return redirect('/login');
+
+        Session::flush();
+
+        Auth::logout();
+
+        return redirect('login');
     }
 }

@@ -9,6 +9,11 @@
         <div class="info">
           <a href="#" class="d-block">Alexander Pierce</a>
         </div>
+        <div class="ml-2 mt-2" title=1"Log Out">
+            <a href="{{ url('logout ') }}">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
+        </div>
       </div>
 
       <!-- Sidebar Menu -->
