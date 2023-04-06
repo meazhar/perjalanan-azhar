@@ -11,7 +11,7 @@
                      <div class="card-body">
                      <form id="form-pegawai">
                        <div class="form-group row">
-                         <label for="nama-produk" class="col-sm-4 col-form-label">ID Karyawan</label>
+                         <label for="id" class="col-sm-4 col-form-label">ID Karyawan</label>
                          <div class="col-sm-8">
                            <input type="text" class="form-control" id="id" name="id" autofocus>
                          </div>
@@ -25,25 +25,25 @@
                       </div>
 
                        <div class="form-group row">
-                         <label for="jumlahbarang" class="col-sm-4 col-form-label">Jumlah Barang</label>
+                         <label for="jmlBarang" class="col-sm-4 col-form-label">Jumlah Barang</label>
                          <div class="col-sm-8">
-                           <input type="text" class="form-control" id="jumlahbarang" name="jumlahbarang" autofocus>
+                           <input type="text" class="form-control" id="jmlBarang" name="jmlBarang" autofocus>
                          </div>
                        </div>
 
 
                        <div class="form-group row">
-                         <label for="tanggalbeli" class="col-sm-4 col-form-label">Tanggal Beli</label>
+                         <label for="tglBeli" class="col-sm-4 col-form-label">Tanggal Beli</label>
                          <div class="col-sm-8">
-                           <input type="date" class="form-control" id="tanggalbeli" name="tanggalbeli" autofocus>
+                           <input type="date" class="form-control" id="tglBeli" name="tglBeli" autofocus>
                          </div>
                        </div>
 
 
                        <div class="form-group row">
-                         <label for="hargabarang" class="col-sm-4 col-form-label">Harga Barang</label>
+                         <label for="hrgBarang" class="col-sm-4 col-form-label">Harga Barang</label>
                          <div class="col-sm-8">
-                           <input type="text" class="form-control" id="hargabarang" name="hargabarang" autofocus>
+                           <input type="text" class="form-control" id="hrgBarang" name="hrgBarang" autofocus>
                          </div>
                        </div>
 
@@ -129,9 +129,9 @@
     let newData = {}
 
     data.forEach(function(item, index){
-      let namabarang = item['namabarang']
-      let value = namabarang === 'id' || namabarang == '7'  ? Number(item['value']) : item['value']
-      newData[namabarang] = value
+      let name = item['name']
+      let value = name === 'id' || name == 'berat'  ? Number(item['value']) : item['value']
+      newData[name] = value
     })
     console.log(newData)
 
@@ -149,7 +149,7 @@
       if(arr.length == 0){
         return row = `<tr><td colspan="8" align="center">Belum ada data</td></tr>`
       }
-      let hargabarang = qty = diskon = jmlTotal = 0
+      let jmlBerat = jmlDiskon = jmlTotal = 0
       arr.forEach(function(item, index){
         // console.log(item)
         let harga = item['jenisCucian'] == 'Standar' ? 7500 : 10000
@@ -163,15 +163,13 @@
 
         row += `<tr>`
         row += `<td>${item['id']}</td>`
-        row += `<td>${item['tanggalbeli']}</td>`
-        row += `<td>${item['namabarang']}</td>`
-        row += `<td>${item['hargabarang']}</td>`
-        row += `<td>${item['qty']}</td>`
-        row += `<td>${item['
-            ']}</td>`
+        row += `<td>${item['notelp']}</td>`
+        row += `<td>${item['jenisCucian']}</td>`
+        row += `<td>${item['namaPelanggan']}</td>`
+        row += `<td>${item['tgl_cuci']}</td>`
+        row += `<td>${item['berat']}</td>`
         row += `<td>${diskon}</td>`
         row += `<td>${total}</td>`
-        row += `<td>${item['jp']}</td>`
         row += `</tr>`
       })
 

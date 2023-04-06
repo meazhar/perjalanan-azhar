@@ -14,7 +14,8 @@ class CatatanController extends Controller
     public function index()
     {
         return view('catatan.index',
-    ["title" => "Data Catatan Perjalanan"]);
+    ["title" => "Data Catatan Perjalanan"]
+);
     }
 
     /**

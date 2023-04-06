@@ -16,7 +16,8 @@ class SimulasitransaksiController extends Controller
     public function index()
     {
         return view ('transaksi.index',
-    ["title" => "Simulasi Transaksi"]);
+    ["title" => "Simulasi Transaksi"]
+);
     }
 
     /**

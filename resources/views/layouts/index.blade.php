@@ -41,5 +41,11 @@
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+
+{{-- AdminLTE for Demo Purpose --}}
+<script src="{{ asset('assets') }}/plugins/datatables.min.js"></script>
+<script src="{{ asset('assets') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('assets') }}/js/sweetalert.min.js"></script>
+@stack('scripts')
 </body>
 </html>

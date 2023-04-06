@@ -32,18 +32,45 @@
 
           <li class="nav-item">
             <a href="{{ url('/catatan') }}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
+              <i class="nav-icon fas fa-box"></i>
               <p>
-                Catatan Perjalanan
+                Paket
               </p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="{{ url('/transaksi') }}" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>
+                Outlet
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url('/absensi') }}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Member
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url('/cucian') }}" class="nav-link">
               <i class="nav-icon fas fa-calculator"></i>
               <p>
-                Simulasi Transaksi
+                Transaksi
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url('/laporan') }}" class="nav-link">
+              <i class="nav-icon fas fa-bug"></i>
+              <p>
+                Laporan Bug
               </p>
             </a>
           </li>
